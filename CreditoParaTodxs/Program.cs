@@ -135,7 +135,7 @@ namespace CreditoParaTodxs
 
             var oferta = repositorio.RetornaPorId(indiceOferta);
 
-            Console.WriteLine(oferta);
+            Console.WriteLine("#ID {0}: - {1}", oferta, oferta.retornaOferta());
         }
 
         private static string ObterOpcaoUsuario(){
