@@ -22,7 +22,7 @@ namespace CreditoParaTodxs
                         break;
 
                     case "3":
-                        //AtualizarOfertas();
+                        AtualizarOferta();
                         break;
 
                     case "4":
@@ -87,6 +87,38 @@ namespace CreditoParaTodxs
                                         taxa: entradaTaxa);
 
             repositorio.Insere(novaOferta);
+        }
+
+        public static void AtualizarOferta(){
+            Console.WriteLine("Digite o id da oferta: ");
+            int indiceOferta = int.Parse(Console.ReadLine());
+
+            foreach (int i in Enum.GetValues(typeof(Instituicao)))
+            {
+                Console.WriteLine("{0} - {1}", i, Enum.GetName(typeof(Instituicao), i));
+    
+            }
+
+            Console.WriteLine("Digite o Instituicao entre as opcoes acima: ");
+            int entradaInstituicao = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Digite a descricao da oferta: ");
+            string entradaDescricao= Console.ReadLine();
+
+            Console.WriteLine("Digite o valor a ser disponibilizado ja contado os jutos: ");
+            double entradaValor = double.Parse(Console.ReadLine());
+
+            Console.WriteLine("Digite a descricao da serie: ");
+            double entradaTaxa = double.Parse(Console.ReadLine());
+
+
+            Ofertador atualizaOferta = new Ofertador(id: indiceOferta,
+                                        instituicao: (Instituicao)entradaInstituicao,
+                                        descricao: entradaDescricao,
+                                        valor: entradaValor,
+                                        taxa: entradaTaxa);
+
+            repositorio.Atualiza(indiceOferta, atualizaOferta);
         }
 
         public static void ExcluirOferta(){
